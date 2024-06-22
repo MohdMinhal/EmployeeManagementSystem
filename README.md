@@ -1,93 +1,93 @@
-# EmployeeManagementSystem
-Project Name -- Employee Management
-============
+# Employee Management System
 
-Description
------------
-This is a brief description of the project.
+## Description
+A comprehensive project for managing employee information, including adding, removing, updating, and retrieving employee details via a RESTful API.
 
-Prerequisites
--------------
+## Prerequisites
 - Java 11 or later
 - Maven
-- VS code
+- VS Code
 - MySQL database
 - Postman
-- Extentions from VS code - Extension Pack for Java
-			  - Spring Boot Extension Pack 
+- VS Code Extensions:
+  - Extension Pack for Java
+  - Spring Boot Extension Pack
 
-Setup
------
-1. Clone the repository from GitHub: 
-
+## Setup
+1. Clone the repository from GitHub:
+   ```bash
+   git clone https://github.com/your-repo/EmployeeManagementSystem.git
+   ```
 
 2. Navigate to the project directory:
-src\main\java\com\example\EmployeeManagementApplication.java
+   ```bash
+   cd EmployeeManagementSystem
+   ```
 
+3. Build the project:
+   ```bash
+   mvn clean install
+   ```
 
-3. Build the project.
+4. Create a MySQL database and update the database configuration in the `application.properties` file located in `src/main/resources`:
+   ```properties
+   spring.datasource.url=jdbc:mysql://your-mysql-host:your-mysql-port/your-database-name
+   spring.datasource.username=your-database-username
+   spring.datasource.password=your-database-password  # Note: Password is removed from the project
+   ```
 
+5. Run the application:
+   ```bash
+   mvn spring-boot:run
+   ```
 
-3. Create a MySQL database and update the database configuration in `application.properties` file located in `src/main/resources`. Modify the following properties:
-spring.datasource.url=jdbc:mysql://your-mysql-host:your-mysql-port/your-database-name
-spring.datasource.username=your-database-username 
-spring.datasource.password=your-database-password
- ***I have removed the password from the project***
-
-5. Run the application.
-
-
-
-API Documentation
------------------
+## API Documentation
 The following are the API endpoints available in this project:
 
-Base URL: /emp
-Endpoints:
+### Base URL: `/emp`
 
-1 GET /home
-Description: Get the welcome message for the Employee Management API.
+#### 1. GET `/home`
+**Description:** Get the welcome message for the Employee Management API.  
+**Response:** 
+```text
+Welcome to Employee Management
+```
 
-Response: Welcome to Employee Management
-...........................................................................................
-
-2 POST /addEmp
-Description: Add a new employee to the database.
-
-Request Body: {
+#### 2. POST `/addEmp`
+**Description:** Add a new employee to the database.  
+**Request Body:**
+```json
+{
   "name": "John Doe",
   "designation": "Software Engineer",
   "salary": 50000.0
 }
-
-
-Response: Status: 201 Created
+```
+**Response:** 
+```json
+Status: 201 Created
 {
   "id": 1,
   "name": "John Doe",
   "designation": "Software Engineer",
   "salary": 50000.0
 }
+```
 
-
-...........................................................................................
-
-3 DELETE /removeEmp/{ID}
-Description: Remove an existing employee from the database by ID.
-
-Path Variable: ID: The ID of the employee to be removed.
-Response: 
+#### 3. DELETE `/removeEmp/{ID}`
+**Description:** Remove an existing employee from the database by ID.  
+**Path Variable:** `ID` - The ID of the employee to be removed.  
+**Response:** 
+```json
 Status: 202 Accepted
 "Remove Successfully"
+```
 
-
-...........................................................................................
-
-4 GET /findEmp/{ID}
-Description: Find an employee by their ID.
-
-Path Variable: ID: The ID of the employee to be found.
-Response : 
+#### 4. GET `/findEmp/{ID}`
+**Description:** Find an employee by their ID.  
+**Path Variable:** `ID` - The ID of the employee to be found.  
+**Response:** 
+```json
 Status: 202 Accepted
 {
   "id": 1,
@@ -95,14 +95,12 @@ Status: 202 Accepted
   "designation": "Software Engineer",
   "salary": 50000.0
 }
+```
 
-
-...........................................................................................
-
-5 GET /all
-Description: Get a list of all employees.
-
-Response: 
+#### 5. GET `/all`
+**Description:** Get a list of all employees.  
+**Response:** 
+```json
 Status: 202 Accepted
 [
   {
@@ -119,22 +117,21 @@ Status: 202 Accepted
   },
   ...
 ]
+```
 
-
-...........................................................................................
-
-
-6 PUT /update/{ID}
-Description: Update an existing employee's information.
-
-Path Variable: ID: The ID of the employee to be updated.
-Request Body: {
+#### 6. PUT `/update/{ID}`
+**Description:** Update an existing employee's information.  
+**Path Variable:** `ID` - The ID of the employee to be updated.  
+**Request Body:**
+```json
+{
   "name": "Updated Employee",
   "designation": "Updated Designation",
   "salary": 70000.0
 }
-
-Response : 
+```
+**Response:** 
+```json
 Status: 201 Created
 {
   "id": 1,
@@ -142,4 +139,4 @@ Status: 201 Created
   "designation": "Updated Designation",
   "salary": 70000.0
 }
-___________________________________________________________________________________________________________________________
+```
